@@ -32,7 +32,9 @@ export default {
 
   methods: {
     deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
+      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(() => this.todos = this.todos.filter(todo => todo.id !== id))
+        .catch(err => console.lgo(err));
     },
     addTodo(newTodo) {
       this.submitButtonValue = 'Adding ...';
