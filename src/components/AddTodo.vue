@@ -2,7 +2,7 @@
     <div>
         <form @submit.prevent="addTodo">
             <input type="text" name="title" v-model="title" placeholder="Add Todo ..." required/>
-            <input type="submit" value="Submit" class="btn">
+            <input type="submit" v-bind:value="submitButtonValue" class="btn">
         </form>
     </div>
 </template>
@@ -11,9 +11,10 @@
 // import { v4 as uuidv4 } from 'uuid';
 export default {
     name: "AddTodo",
+    props: ["submitButtonValue"],
     data() {
         return {
-            title: ''
+            title: '',
         }
     },
     methods: {
